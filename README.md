@@ -10,8 +10,8 @@ Ollama Langchain Devcontainer
 ```
 git clone git@github.com:rayedbw/llamachain.git
 cd llamachain
-docker compose run -it -d ollama
-docker compose exec -it ollama ollama pull llama2
+docker compose run -d ollama
+docker compose exec ollama ollama pull llama2
 ```
 
 ### Setup VSCode
@@ -23,9 +23,9 @@ docker compose exec -it ollama ollama pull llama2
 `python src/main.py` or `F5`
 
 ### Try different LLM models
-`docker compose run -it -d ollama` to ensure that the container is running
+`docker compose run -d ollama` to ensure that the container is running
 
-`docker compose exec -it ollama ollama pull gemini` to try the **gemini** model
+`docker compose exec ollama ollama pull gemini` to try the **gemini** model
 
  
 
