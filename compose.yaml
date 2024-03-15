@@ -1,0 +1,36 @@
+services:
+  langchain:
+    build: .
+    volumes:
+      - .:/workspaces/llamachain:cached
+    command: sleep infinity
+    depends_on:
+      - ollama
+    networks:
+      - llamachain
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+
+  ollama:
+    image: ollama/ollama:0.1.29
+    hostname: ollama
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - 11434:11434
+    networks:
+      - llamachain
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+
+volumes:
+  ollama:
+
+
+networks:
+  llamachain:
