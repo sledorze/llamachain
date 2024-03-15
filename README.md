@@ -10,6 +10,7 @@ Ollama Langchain Devcontainer
 ```
 git clone git@github.com:rayedbw/llamachain.git
 cd llamachain
+docker compose run -it -d ollama
 docker compose exec -it ollama ollama pull llama2
 ```
 
