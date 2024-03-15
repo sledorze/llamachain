@@ -20,9 +20,7 @@ docker compose exec -it ollama ollama pull llama2
 - `Ctrl + Shift + P` to open the command palette and type **Rebuild and Reopen in Container**
 
 ### Run the application
-```
-python src/main.py
-```
+`python src/main.py` or `F5`
 
 ### Try different LLM models
 `docker compose run -it -d ollama` to ensure that the container is running
