@@ -24,6 +24,11 @@ docker compose exec -it ollama ollama pull llama2
 python src/main.py
 ```
 
+### Try different LLM models
+`docker compose run -it -d ollama` to ensure that the container is running
+
+`docker compose exec -it ollama ollama pull gemini` to try the **gemini** model
+
  
 
 
