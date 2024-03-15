@@ -1,6 +1,7 @@
+import os
 from ollama import Client
 
-client = Client(host="http://ollama:11434")
+client = Client(host=os.environ["OLLAMA_BASE_URL"])
 
 stream = client.chat(
     model="llama2",
