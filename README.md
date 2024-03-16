@@ -2,30 +2,39 @@
 Ollama Langchain Devcontainer
 
 ### Install Docker
-- Install Docker
+- Install [Docker](https://docs.docker.com/engine/install/)
 - Follow the post installation steps
-- Install Docker Compose
+- Install [Docker Compose](https://docs.docker.com/compose/install/)
 
-### Pull Llama2 LLM
-```
+### Download project
+```bash
 git clone git@github.com:rayedbw/llamachain.git
 cd llamachain
-docker compose run -d ollama
-docker compose exec ollama ollama pull llama2
 ```
 
-### Setup VSCode
-- Open the project in vscdoe `code .`
+### Setup vscode
+- Open the project in vscode `code .`
 - Install the `Dev Container` extension pack
 - `Ctrl + Shift + P` to open the command palette and type **Rebuild and Reopen in Container**
 
-### Run the application
-`python src/main.py` or `F5`
+### Pull Llama2 model
+In a terminal window outside of the container run the following to download the llama2 model in your container:
+```bash
+docker exec llamachain-ollama-1 ollama pull llama2
+```
+
+### Run the application in vscode
+`python src/main.py` or press `F5`
 
 ### Try different LLM models
-`docker compose run -d ollama` to ensure that the container is running
+`docker exec llamachain-ollama-1 ollama pull gemini` to try the **gemini** model
 
-`docker compose exec ollama ollama pull gemini` to try the **gemini** model
+Don't forget to actually use the model in your code by changing the `model` parameter.
+```python
+from langchain_community.chat_models import ChatOllama
+
+llm = ChatOllama(model="gemini", base_url=os.environ["OLLAMA_BASE_URL"])
+```
 
  
 
