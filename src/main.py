@@ -1,13 +1,10 @@
 import os
-from ollama import Client
 
-client = Client(host=os.environ["OLLAMA_BASE_URL"])
+from langchain_community.llms.ollama import Ollama
 
-stream = client.chat(
-    model="llama2",
-    messages=[{"role": "user", "content": "Why is the sky blue?"}],
-    stream=True,
-)
+llama_model = Ollama(model="llama2", base_url=os.environ["OLLAMA_BASE_URL"])
 
-for chunk in stream:
-    print(chunk["message"]["content"], end="", flush=True)
+query = "Why is the sky blue?"
+
+for chunk in llama_model.stream(query):
+    print(chunk, end="", flush=True)
