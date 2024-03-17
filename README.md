@@ -31,7 +31,7 @@ docker exec llamachain-ollama-1 ollama pull llama2
 
 Don't forget to actually use the model in your code by changing the `model` parameter.
 ```python
-from langchain_community.chat_models import ChatOllama
+from langchain_community.chat_models.ollama import ChatOllama
 
 llm = ChatOllama(model="gemini", base_url=os.environ["OLLAMA_BASE_URL"])
 ```
