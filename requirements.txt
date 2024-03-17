@@ -1,6 +1,5 @@
 langchain==0.1.12
 langchain-openai==0.0.8
 beautifulsoup4==4.12.3
-faiss-cpu==1.8.0
 chromadb==0.4.24
 ipykernel==6.29.3
