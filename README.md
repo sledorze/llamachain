@@ -36,6 +36,11 @@ from langchain_community.chat_models import ChatOllama
 llm = ChatOllama(model="gemini", base_url=os.environ["OLLAMA_BASE_URL"])
 ```
 
+### Use OpenAI
+- Create an api key from the [OpenAI website](https://platform.openai.com/api-keys)
+- Create a `.env` file at the project root
+- Add `OPENAI_API_KEY=<your_api_key>`
+
  
 
 
