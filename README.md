@@ -27,13 +27,13 @@ docker exec llamachain-ollama-1 ollama pull llama2
 `python src/main.py` or press `F5`
 
 ### Try different LLM models
-`docker exec llamachain-ollama-1 ollama pull gemini` to try the **gemini** model
+`docker exec llamachain-ollama-1 ollama pull gemema` to try the **gemma** model
 
 Don't forget to actually use the model in your code by changing the `model` parameter.
 ```python
 from langchain_community.chat_models.ollama import ChatOllama
 
-llm = ChatOllama(model="gemini", base_url=os.environ["OLLAMA_BASE_URL"])
+llm = ChatOllama(model="gemma", base_url=os.environ["OLLAMA_BASE_URL"])
 ```
 
 ### To use OpenAI
