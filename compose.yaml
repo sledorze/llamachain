@@ -4,7 +4,7 @@ services:
     volumes:
       - .:/workspaces/llamachain:cached
     networks:
-      - llamachain
+      - private
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
     depends_on:
@@ -16,21 +16,19 @@ services:
     hostname: ollama
     volumes:
       - ollama:/root/.ollama
-    ports:
-      - 11434:11434
     networks:
-      - llamachain
+      - private
     deploy:
       resources:
         reservations:
           devices:
             - driver: nvidia
               count: 1
-              capabilities: [ gpu ]
+              capabilities: [ gpu, utility ]
 
 volumes:
   ollama:
 
 
 networks:
-  llamachain:
+  private:
