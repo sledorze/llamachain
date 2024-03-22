@@ -3,8 +3,6 @@ services:
     build: .
     volumes:
       - .:/workspaces/llamachain:cached
-    networks:
-      - private
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
     depends_on:
@@ -16,8 +14,6 @@ services:
     hostname: ollama
     volumes:
       - ollama:/root/.ollama
-    networks:
-      - private
     deploy:
       resources:
         reservations:
@@ -28,7 +24,3 @@ services:
 
 volumes:
   ollama:
-
-
-networks:
-  private:
