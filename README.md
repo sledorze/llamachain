@@ -27,7 +27,7 @@ docker exec llamachain-ollama-1 ollama pull llama2
 `python src/main.py` or press `F5`
 
 ### Try different LLM models
-`docker exec llamachain-ollama-1 ollama pull gemema` to try the **gemma** model
+`docker exec llamachain-ollama-1 ollama pull gemma` to try the **gemma** model
 
 Don't forget to actually use the model in your code by changing the `model` parameter.
 ```python
