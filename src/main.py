@@ -1,10 +1,16 @@
 import os
 
-from langchain_community.chat_models.ollama import ChatOllama 
+from langchain_community.llms.ollama import Ollama
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
 
-llama_model = ChatOllama(model="llama2", base_url=os.environ["OLLAMA_BASE_URL"])
+OLLAMA_BASE_URL = os.environ["OLLAMA_BASE_URL"]
 
-query = "Why is the sky blue?"
+model = Ollama(model="mistral", base_url=OLLAMA_BASE_URL)
+prompt = ChatPromptTemplate.from_template("Tell me a joke about {topic}")
+parser = StrOutputParser()
 
-for chunk in llama_model.stream(query):
-    print(chunk.content, end="", flush=True)
+chain = prompt | model | parser
+
+for chunk in chain.stream({"topic": "Harrison Ford"}):
+    print(chunk, end="", flush=True)
