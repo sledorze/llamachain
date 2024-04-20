@@ -1,8 +1,10 @@
+version: '3.8'  # It's good practice to specify a version
+
 services:
   langchain:
     build: .
     volumes:
-      - .:/workspaces/llamachain:cached
+      - .:/workspaces/llamachain:cached  # This is fine for macOS as well
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
     depends_on:
@@ -14,13 +16,14 @@ services:
     hostname: ollama
     volumes:
       - ollama:/root/.ollama
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [ gpu, utility ]
+    # Removed GPU specific settings for compatibility with macOS
+      # deploy:
+      # resources:
+      #   reservations:
+      #     devices:
+      #       - driver: nvidia
+      #         count: 1
+      #         capabilities: [ gpu, utility ]
 
 volumes:
   ollama:
